@@ -188,7 +188,7 @@ function AdminPendaftar() {
     const { error } = await supabase.from("registrations").delete().in("id", ids);
     if (error) return toast.error(error.message);
     for (const row of deletedRows) {
-      await supabase.from("documents").delete().eq("email", row.email).eq("kind", row.kind);
+      await supabase.from("documents").delete().eq("email", row.email).eq("kind", row.kind as never);
     }
     toast.success(`${ids.length} pendaftar dihapus`);
     setRows((prev) => prev.filter((r) => !ids.includes(r.id)));
