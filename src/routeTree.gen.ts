@@ -44,6 +44,7 @@ import { Route as AdministrasiPrestasiRouteImport } from './routes/administrasi.
 import { Route as AdministrasiEkonomiRouteImport } from './routes/administrasi.ekonomi'
 import { Route as AdminWhatsappRouteImport } from './routes/admin.whatsapp'
 import { Route as AdminSistemUpdateRouteImport } from './routes/admin.sistem-update'
+import { Route as AdminSeleksiRouteImport } from './routes/admin.seleksi'
 import { Route as AdminPengaturanRouteImport } from './routes/admin.pengaturan'
 import { Route as AdminPendaftarRouteImport } from './routes/admin.pendaftar'
 import { Route as AdminPembayaranRouteImport } from './routes/admin.pembayaran'
@@ -54,6 +55,7 @@ import { Route as AdminKeamananRouteImport } from './routes/admin.keamanan'
 import { Route as AdminKandidatRouteImport } from './routes/admin.kandidat'
 import { Route as AdminIklanKustomRouteImport } from './routes/admin.iklan-kustom'
 import { Route as AdminFormulirRouteImport } from './routes/admin.formulir'
+import { Route as AdminEsaiRouteImport } from './routes/admin.esai'
 import { Route as AdminEmailTemplateRouteImport } from './routes/admin.email-template'
 import { Route as AdminDonasiRouteImport } from './routes/admin.donasi'
 import { Route as AdminBrandingRouteImport } from './routes/admin.branding'
@@ -245,6 +247,11 @@ const AdminSistemUpdateRoute = AdminSistemUpdateRouteImport.update({
   path: '/sistem-update',
   getParentRoute: () => AdminRoute,
 } as any)
+const AdminSeleksiRoute = AdminSeleksiRouteImport.update({
+  id: '/seleksi',
+  path: '/seleksi',
+  getParentRoute: () => AdminRoute,
+} as any)
 const AdminPengaturanRoute = AdminPengaturanRouteImport.update({
   id: '/pengaturan',
   path: '/pengaturan',
@@ -293,6 +300,11 @@ const AdminIklanKustomRoute = AdminIklanKustomRouteImport.update({
 const AdminFormulirRoute = AdminFormulirRouteImport.update({
   id: '/formulir',
   path: '/formulir',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminEsaiRoute = AdminEsaiRouteImport.update({
+  id: '/esai',
+  path: '/esai',
   getParentRoute: () => AdminRoute,
 } as any)
 const AdminEmailTemplateRoute = AdminEmailTemplateRouteImport.update({
@@ -392,6 +404,7 @@ export interface FileRoutesByFullPath {
   '/admin/branding': typeof AdminBrandingRoute
   '/admin/donasi': typeof AdminDonasiRoute
   '/admin/email-template': typeof AdminEmailTemplateRoute
+  '/admin/esai': typeof AdminEsaiRoute
   '/admin/formulir': typeof AdminFormulirRoute
   '/admin/iklan-kustom': typeof AdminIklanKustomRoute
   '/admin/kandidat': typeof AdminKandidatRoute
@@ -402,6 +415,7 @@ export interface FileRoutesByFullPath {
   '/admin/pembayaran': typeof AdminPembayaranRoute
   '/admin/pendaftar': typeof AdminPendaftarRoute
   '/admin/pengaturan': typeof AdminPengaturanRoute
+  '/admin/seleksi': typeof AdminSeleksiRoute
   '/admin/sistem-update': typeof AdminSistemUpdateRoute
   '/admin/whatsapp': typeof AdminWhatsappRoute
   '/administrasi/ekonomi': typeof AdministrasiEkonomiRoute
@@ -453,6 +467,7 @@ export interface FileRoutesByTo {
   '/admin/branding': typeof AdminBrandingRoute
   '/admin/donasi': typeof AdminDonasiRoute
   '/admin/email-template': typeof AdminEmailTemplateRoute
+  '/admin/esai': typeof AdminEsaiRoute
   '/admin/formulir': typeof AdminFormulirRoute
   '/admin/iklan-kustom': typeof AdminIklanKustomRoute
   '/admin/kandidat': typeof AdminKandidatRoute
@@ -463,6 +478,7 @@ export interface FileRoutesByTo {
   '/admin/pembayaran': typeof AdminPembayaranRoute
   '/admin/pendaftar': typeof AdminPendaftarRoute
   '/admin/pengaturan': typeof AdminPengaturanRoute
+  '/admin/seleksi': typeof AdminSeleksiRoute
   '/admin/sistem-update': typeof AdminSistemUpdateRoute
   '/admin/whatsapp': typeof AdminWhatsappRoute
   '/administrasi/ekonomi': typeof AdministrasiEkonomiRoute
@@ -514,6 +530,7 @@ export interface FileRoutesById {
   '/admin/branding': typeof AdminBrandingRoute
   '/admin/donasi': typeof AdminDonasiRoute
   '/admin/email-template': typeof AdminEmailTemplateRoute
+  '/admin/esai': typeof AdminEsaiRoute
   '/admin/formulir': typeof AdminFormulirRoute
   '/admin/iklan-kustom': typeof AdminIklanKustomRoute
   '/admin/kandidat': typeof AdminKandidatRoute
@@ -524,6 +541,7 @@ export interface FileRoutesById {
   '/admin/pembayaran': typeof AdminPembayaranRoute
   '/admin/pendaftar': typeof AdminPendaftarRoute
   '/admin/pengaturan': typeof AdminPengaturanRoute
+  '/admin/seleksi': typeof AdminSeleksiRoute
   '/admin/sistem-update': typeof AdminSistemUpdateRoute
   '/admin/whatsapp': typeof AdminWhatsappRoute
   '/administrasi/ekonomi': typeof AdministrasiEkonomiRoute
@@ -578,6 +596,7 @@ export interface FileRouteTypes {
     | '/admin/branding'
     | '/admin/donasi'
     | '/admin/email-template'
+    | '/admin/esai'
     | '/admin/formulir'
     | '/admin/iklan-kustom'
     | '/admin/kandidat'
@@ -588,6 +607,7 @@ export interface FileRouteTypes {
     | '/admin/pembayaran'
     | '/admin/pendaftar'
     | '/admin/pengaturan'
+    | '/admin/seleksi'
     | '/admin/sistem-update'
     | '/admin/whatsapp'
     | '/administrasi/ekonomi'
@@ -639,6 +659,7 @@ export interface FileRouteTypes {
     | '/admin/branding'
     | '/admin/donasi'
     | '/admin/email-template'
+    | '/admin/esai'
     | '/admin/formulir'
     | '/admin/iklan-kustom'
     | '/admin/kandidat'
@@ -649,6 +670,7 @@ export interface FileRouteTypes {
     | '/admin/pembayaran'
     | '/admin/pendaftar'
     | '/admin/pengaturan'
+    | '/admin/seleksi'
     | '/admin/sistem-update'
     | '/admin/whatsapp'
     | '/administrasi/ekonomi'
@@ -699,6 +721,7 @@ export interface FileRouteTypes {
     | '/admin/branding'
     | '/admin/donasi'
     | '/admin/email-template'
+    | '/admin/esai'
     | '/admin/formulir'
     | '/admin/iklan-kustom'
     | '/admin/kandidat'
@@ -709,6 +732,7 @@ export interface FileRouteTypes {
     | '/admin/pembayaran'
     | '/admin/pendaftar'
     | '/admin/pengaturan'
+    | '/admin/seleksi'
     | '/admin/sistem-update'
     | '/admin/whatsapp'
     | '/administrasi/ekonomi'
@@ -1022,6 +1046,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminSistemUpdateRouteImport
       parentRoute: typeof AdminRoute
     }
+    '/admin/seleksi': {
+      id: '/admin/seleksi'
+      path: '/seleksi'
+      fullPath: '/admin/seleksi'
+      preLoaderRoute: typeof AdminSeleksiRouteImport
+      parentRoute: typeof AdminRoute
+    }
     '/admin/pengaturan': {
       id: '/admin/pengaturan'
       path: '/pengaturan'
@@ -1090,6 +1121,13 @@ declare module '@tanstack/react-router' {
       path: '/formulir'
       fullPath: '/admin/formulir'
       preLoaderRoute: typeof AdminFormulirRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/esai': {
+      id: '/admin/esai'
+      path: '/esai'
+      fullPath: '/admin/esai'
+      preLoaderRoute: typeof AdminEsaiRouteImport
       parentRoute: typeof AdminRoute
     }
     '/admin/email-template': {
@@ -1210,6 +1248,7 @@ interface AdminRouteChildren {
   AdminBrandingRoute: typeof AdminBrandingRoute
   AdminDonasiRoute: typeof AdminDonasiRoute
   AdminEmailTemplateRoute: typeof AdminEmailTemplateRoute
+  AdminEsaiRoute: typeof AdminEsaiRoute
   AdminFormulirRoute: typeof AdminFormulirRoute
   AdminIklanKustomRoute: typeof AdminIklanKustomRoute
   AdminKandidatRoute: typeof AdminKandidatRoute
@@ -1220,6 +1259,7 @@ interface AdminRouteChildren {
   AdminPembayaranRoute: typeof AdminPembayaranRoute
   AdminPendaftarRoute: typeof AdminPendaftarRoute
   AdminPengaturanRoute: typeof AdminPengaturanRoute
+  AdminSeleksiRoute: typeof AdminSeleksiRoute
   AdminSistemUpdateRoute: typeof AdminSistemUpdateRoute
   AdminWhatsappRoute: typeof AdminWhatsappRoute
   AdminIndexRoute: typeof AdminIndexRoute
@@ -1237,6 +1277,7 @@ const AdminRouteChildren: AdminRouteChildren = {
   AdminBrandingRoute: AdminBrandingRoute,
   AdminDonasiRoute: AdminDonasiRoute,
   AdminEmailTemplateRoute: AdminEmailTemplateRoute,
+  AdminEsaiRoute: AdminEsaiRoute,
   AdminFormulirRoute: AdminFormulirRoute,
   AdminIklanKustomRoute: AdminIklanKustomRoute,
   AdminKandidatRoute: AdminKandidatRoute,
@@ -1247,6 +1288,7 @@ const AdminRouteChildren: AdminRouteChildren = {
   AdminPembayaranRoute: AdminPembayaranRoute,
   AdminPendaftarRoute: AdminPendaftarRoute,
   AdminPengaturanRoute: AdminPengaturanRoute,
+  AdminSeleksiRoute: AdminSeleksiRoute,
   AdminSistemUpdateRoute: AdminSistemUpdateRoute,
   AdminWhatsappRoute: AdminWhatsappRoute,
   AdminIndexRoute: AdminIndexRoute,
