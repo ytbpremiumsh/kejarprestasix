@@ -110,7 +110,7 @@ function AdminOverview() {
         supabase.from("registrations").select("id", { count: "exact", head: true }),
         supabase.from("registrations").select("id", { count: "exact", head: true }).eq("kind", "prestasi"),
         supabase.from("registrations").select("id", { count: "exact", head: true }).eq("kind", "ekonomi"),
-        supabase.from("registrations").select("id", { count: "exact", head: true }).eq("kind", "umum"),
+        supabase.from("registrations").select("id", { count: "exact", head: true }).eq("kind", "umum" as never),
         supabase.from("registrations").select("id", { count: "exact", head: true }).eq("status", "pending"),
         supabase.from("registrations").select("id", { count: "exact", head: true }).gte("created_at", startToday.toISOString()),
         supabase.from("documents").select("id", { count: "exact", head: true }),
