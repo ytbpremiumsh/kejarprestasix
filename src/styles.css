@@ -143,5 +143,27 @@ html.lite-mode *, html.lite-mode *::before, html.lite-mode *::after { animation-
 html.lite-mode img, html.lite-mode video { content-visibility: auto; }
 html[data-disable-ads="1"] .adsbygoogle, html[data-disable-ads="1"] [data-ad-slot] { display: none !important; }
 
+/* Maintenance is rendered in a body portal. Keep it isolated from injected layout CSS. */
+[data-maintenance-page="true"]:not([data-maintenance-embedded]) {
+  position: fixed !important;
+  inset: 0 !important;
+  width: 100vw !important;
+  min-width: 100vw !important;
+  max-width: none !important;
+  min-height: 100vh !important;
+  margin: 0 !important;
+  transform: none !important;
+  z-index: 999999 !important;
+}
+[data-maintenance-page="true"] > main {
+  width: 100% !important;
+  min-width: 0 !important;
+}
+[data-maintenance-page="true"] section,
+[data-maintenance-page="true"] header,
+[data-maintenance-page="true"] div {
+  min-width: 0;
+}
+
 @keyframes bounce-soft { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
 .animate-bounce-soft { animation: bounce-soft 1.6s ease-in-out infinite; }

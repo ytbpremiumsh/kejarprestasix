@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { Clock3, LockKeyhole, Mail, MessageCircle, RefreshCw, ShieldCheck, Sparkles, Wrench } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -38,15 +39,17 @@ export function MaintenancePage({ config, embedded = false }: { config: Maintena
   const message = config.message || "Kami sedang meningkatkan sistem agar layanan dapat digunakan dengan lebih nyaman dan optimal. Silakan kembali beberapa saat lagi.";
   const whatsapp = config.contact_whatsapp?.replace(/\D/g, "");
 
-  return <div
+  const page = <div
     data-maintenance-page="true"
+    data-maintenance-embedded={embedded ? "true" : undefined}
+    style={!embedded ? { width: "100vw", minWidth: "100vw", maxWidth: "none", transform: "none" } : undefined}
     className={cn(
       "overflow-y-auto bg-[#f8f7fc] text-indigo-950",
       embedded ? "relative min-h-[700px] w-full" : "fixed inset-0 z-[999999] min-h-screen w-screen",
     )}
   >
     <div aria-hidden className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(124,58,237,.11),transparent_32%),radial-gradient(circle_at_bottom_right,rgba(79,70,229,.08),transparent_34%)]" />
-    <main className={cn("relative mx-auto flex w-full max-w-[900px] items-center px-4 py-6 sm:px-6 sm:py-10", embedded ? "min-h-[700px]" : "min-h-screen")}>
+    <main style={{ width: "100%" }} className={cn("relative mx-auto flex w-full max-w-[1000px] items-center px-4 py-6 sm:px-6 sm:py-10", embedded ? "min-h-[700px]" : "min-h-screen")}>
       <section className="w-full min-w-0 overflow-hidden rounded-[28px] border border-violet-100 bg-white shadow-[0_28px_80px_rgba(76,29,149,.12)]">
         <header className="flex flex-col gap-4 border-b border-violet-100 px-5 py-5 sm:flex-row sm:items-center sm:justify-between sm:px-8">
           <div className="flex min-w-0 items-center gap-3">
@@ -89,4 +92,7 @@ export function MaintenancePage({ config, embedded = false }: { config: Maintena
       </section>
     </main>
   </div>;
+
+  if (embedded || typeof document === "undefined") return page;
+  return createPortal(page, document.body);
 }
