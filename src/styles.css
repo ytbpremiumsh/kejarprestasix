@@ -159,6 +159,45 @@ html[data-disable-ads="1"] .adsbygoogle, html[data-disable-ads="1"] [data-ad-slo
   width: 100% !important;
   min-width: 0 !important;
 }
+[data-maintenance-page="true"] {
+  color-scheme: light !important;
+  background: #f8fafc !important;
+  color: #334155 !important;
+}
+[data-maintenance-page="true"] div,
+[data-maintenance-page="true"] span {
+  background-color: transparent !important;
+}
+[data-maintenance-page="true"] [data-maintenance-card],
+[data-maintenance-page="true"] [data-maintenance-header],
+[data-maintenance-page="true"] [data-maintenance-counter] {
+  background: #ffffff !important;
+  border-color: #e2e8f0 !important;
+}
+[data-maintenance-page="true"] [data-maintenance-countdown] {
+  background: #f8fafc !important;
+  border-color: #e2e8f0 !important;
+}
+[data-maintenance-page="true"] h1,
+[data-maintenance-page="true"] h2,
+[data-maintenance-page="true"] h3 {
+  color: #1e293b !important;
+}
+[data-maintenance-page="true"] p {
+  color: #64748b !important;
+  text-shadow: none !important;
+}
+[data-maintenance-page="true"] a {
+  color: #0369a1 !important;
+}
+[data-maintenance-page="true"] [data-maintenance-primary] {
+  background: #0284c7 !important;
+  border-color: #0284c7 !important;
+  color: #ffffff !important;
+}
+[data-maintenance-page="true"] [data-maintenance-primary]:hover {
+  background: #0369a1 !important;
+}
 [data-maintenance-page="true"] section,
 [data-maintenance-page="true"] header,
 [data-maintenance-page="true"] div {

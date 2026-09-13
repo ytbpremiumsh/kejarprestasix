@@ -50,8 +50,8 @@ export function MaintenancePage({ config, embedded = false }: { config: Maintena
   >
     <div aria-hidden className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(14,165,233,.07),transparent_32%),radial-gradient(circle_at_bottom_right,rgba(16,185,129,.05),transparent_34%)]" />
     <main style={{ width: "100%" }} className={cn("relative mx-auto flex w-full max-w-[1000px] items-center px-4 py-6 sm:px-6 sm:py-10", embedded ? "min-h-[700px]" : "min-h-screen")}>
-      <section className="w-full min-w-0 overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-[0_28px_80px_rgba(15,23,42,.10)]">
-        <header className="flex flex-col gap-4 border-b border-slate-200 px-5 py-5 sm:flex-row sm:items-center sm:justify-between sm:px-8">
+      <section data-maintenance-card className="w-full min-w-0 overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-[0_28px_80px_rgba(15,23,42,.10)]">
+        <header data-maintenance-header className="flex flex-col gap-4 border-b border-slate-200 px-5 py-5 sm:flex-row sm:items-center sm:justify-between sm:px-8">
           <div className="flex min-w-0 items-center gap-3">
             <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-sky-100 bg-white text-sky-600 shadow-lg shadow-slate-200/70"><Sparkles className="h-5 w-5" /></span>
             <div className="min-w-0"><p className="truncate text-base font-black tracking-tight">Kejar Prestasi</p><p className="text-[9px] font-bold uppercase tracking-[.16em] text-sky-600 sm:text-[10px]">Program Beasiswa Pendidikan</p></div>
@@ -69,17 +69,17 @@ export function MaintenancePage({ config, embedded = false }: { config: Maintena
             </div>
           </div>
 
-          {countdown && !countdown.done && <section className="mt-7 rounded-2xl border border-slate-200 bg-slate-50/70 p-4 sm:p-5">
+          {countdown && !countdown.done && <section data-maintenance-countdown className="mt-7 rounded-2xl border border-slate-200 bg-slate-50/70 p-4 sm:p-5">
             <div className="mb-4 flex items-center gap-2 text-[10px] font-black uppercase tracking-[.14em] text-sky-700"><Clock3 className="h-4 w-4" />Estimasi kembali online</div>
             <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-4">{[
               { value: countdown.days, label: "Hari" }, { value: countdown.hours, label: "Jam" },
               { value: countdown.minutes, label: "Menit" }, { value: countdown.seconds, label: "Detik" },
-            ].map((item) => <div key={item.label} className="min-w-0 rounded-xl border border-slate-200 bg-white px-2 py-3 text-center shadow-sm sm:py-4"><p className="text-2xl font-black tabular-nums text-sky-700">{String(item.value).padStart(2, "0")}</p><p className="mt-1 text-[9px] font-bold uppercase tracking-wider text-slate-400">{item.label}</p></div>)}</div>
+            ].map((item) => <div data-maintenance-counter key={item.label} className="min-w-0 rounded-xl border border-slate-200 bg-white px-2 py-3 text-center shadow-sm sm:py-4"><p className="text-2xl font-black tabular-nums text-sky-700">{String(item.value).padStart(2, "0")}</p><p className="mt-1 text-[9px] font-bold uppercase tracking-wider text-slate-400">{item.label}</p></div>)}</div>
           </section>}
           {countdown?.done && <div className="mt-7 rounded-2xl border border-emerald-200 bg-emerald-50 p-4 text-sm font-semibold text-emerald-700">Estimasi pemeliharaan telah selesai. Silakan periksa kembali website.</div>}
 
           <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            <Button size="lg" onClick={() => window.location.reload()} className="min-h-12 rounded-xl bg-sky-600 px-6 font-extrabold shadow-lg shadow-sky-100 hover:bg-sky-700"><RefreshCw className="mr-2 h-4 w-4" />Periksa Kembali</Button>
+            <Button data-maintenance-primary size="lg" onClick={() => window.location.reload()} className="min-h-12 rounded-xl bg-sky-600 px-6 font-extrabold shadow-lg shadow-sky-100 hover:bg-sky-700"><RefreshCw className="mr-2 h-4 w-4" />Periksa Kembali</Button>
             {whatsapp && <Button asChild size="lg" variant="outline" className="min-h-12 rounded-xl border-slate-200 px-5 text-slate-700 hover:bg-slate-50"><a href={`https://wa.me/${whatsapp}`} target="_blank" rel="noreferrer"><MessageCircle className="mr-2 h-4 w-4 text-emerald-600" />Hubungi WhatsApp</a></Button>}
             {config.contact_email && <Button asChild size="lg" variant="outline" className="min-h-12 rounded-xl border-slate-200 px-5 text-slate-700 hover:bg-slate-50"><a href={`mailto:${config.contact_email}`}><Mail className="mr-2 h-4 w-4 text-sky-600" />Hubungi Email</a></Button>}
           </div>
